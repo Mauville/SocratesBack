@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.2.0/jsencrypt.min.js"
+            integrity="sha512-+81yWICnHhrOvwt+zssByewxN2EDLJGUyC8Q2dKyYNClFMMe4RONxwLEmSAm+e/ZpxTC1jgKpeyijAY1MhLObQ=="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Public Bulletin Board</title>
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div id="content" >
+    <h2>Audit Log</h2>
+    <pre id="logger"></pre>
+</div>
+<!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+<style>
+    #content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logger {
+        text-align: left;
+    }
+
+    #keys {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+<script>
+</script>
+<script>
+    function countstories(g) {
+        let names = new Set(g);
+        let elem = {}
+        let elem2 = [["Candidate", "Votes"]]
+        names.forEach(function(w){
+            elem[w] = 0
+        })
+        g.forEach(function (e){
+            elem[e]++;
+        })
+
+        // for (let i = 0; i < g.length; i++) {
+        //     for (let j = 0; j < elem.length; j++) {
+        //         if (elem[j][0] == g[i]) {
+        //             if (elem[j][1] == null) {
+        //                 elem[j][1] = 1
+        //             } else {
+        //                 elem[j][i] = ++elem[j][i];
+        //             }
+        //         }
+        //     }
+        //
+        // }
+        for (const [key, value] of Object.entries(elem)) {
+            elem2.push([key,value])
+        }
+        return elem2
+    }
+
+    let prikey = null;
+    let encvotes = []
+    let decvote = []
+    // Fetch votes
+    //fetch votes
+</script>
+<script type="text/javascript">
+    let logs = []
+
+    async function getLogs() {
+        $.get("http://127.0.0.1:8080/getLog", function (response) {
+            console.log(response)
+            logs = response
+            logs.forEach(function (e) {
+                if (e == "0") throw DOMException;
+                $("#logger").append("[BLOCKCHAIN LOG @" + new Date($.now()) + "]: Vote processed with txid: " + e + ".\n")
+            })
+        })
+    }
+
+    getLogs()
+
+    // Draw the chart and set the chart values
+</script>
+</html>
