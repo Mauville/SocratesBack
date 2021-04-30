@@ -109,7 +109,7 @@
         $.ajax(settings).done(function (response) {
             console.log(response)
             for (let i = 0; i < response.rows.length; i++) {
-                encvotes.push(response.rows[i].doc.vote);
+                decvote.push(response.rows[i].doc.vote);
             }
             console.log(encvotes)
         });
@@ -128,14 +128,14 @@
         $("#keys").toggle()
         $("#content").toggle()
 
-        var decrypt = new JSEncrypt();
-        decrypt.setPrivateKey(prikey)
-        encvotes.forEach(function (e) {
-            var uncrypted = decrypt.decrypt(e);
-            decvote.push(uncrypted)
-            console.log(uncrypted);
-
-
+        // var decrypt = new JSEncrypt();
+        // decrypt.setPrivateKey(prikey)
+        // encvotes.forEach(function (e) {
+        //     var uncrypted = decrypt.decrypt(e);
+        //     decvote.push(uncrypted)
+        //     console.log(uncrypted);
+        //
+        //
             drawChart(countstories(decvote));
 
         })
